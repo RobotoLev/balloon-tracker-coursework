@@ -1,0 +1,52 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 40px;
+}
+
+container {
+    margin-bottom: 40px;
+    min-height: 100%;
+    position: relative;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+}
+
+.form-container {
+    width: 35%;
+    margin: 50px auto;
+}
+
+.form-container table td {
+    padding: 5px;
+}
+
+@media(max-width: 1280px) {
+    .form-container {
+        width: 50%;
+    }
+}
+
+@media(max-width: 600px) {
+    .form-container {
+        width: 100%;
+    }
+
+    .row-cols-3 .col {
+        width: 100%;
+    }
+}
+
+.balloon {
+    display: inline-block;
+    border-radius: 50%;
+    width: 30px!important;
+    height: 30px!important;
+}

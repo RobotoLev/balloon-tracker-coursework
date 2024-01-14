@@ -1,0 +1,43 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}
+    Вход
+{% endblock %}
+
+{% block content %}
+    {% if form.errors %}
+        <p></p>
+        <p align="center">Такого пользователя не существует.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+            <p></p>
+            <p align="center">У Вас нет доступа.</p>
+        {% else %}
+            <p></p>
+            <p align="center">Введите логин и пароль.</p>
+        {% endif %}
+    {% endif %}
+
+    <div class="form-container">
+        <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <table>
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{{ form.password.label_tag }} </td>
+            <td>{{ form.password }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Войти" class="btn btn-primary"></td>
+        </tr>
+        </table>
+        <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}
+    Волонтер
+{% endblock %}
+
+{% block content %}
+    <p></p>
+
+    <p class="lead">Добро пожаловать в волонтеры. Шарики ждут!</p>
+
+    <p>Ниже будут появляться ордера на выдачу шариков участникам. Список Ваших ордеров обновляется каждые 30 секунд.</p>
+
+    <p>После того как доставите шарик команде и закрепите его, нажмите "Выполнен" и подтвердите выдачу шарика.</p>
+
+    <table class="table table-striped">
+    <tr>
+        <th>Цвет</th>
+        <th>Локация</th>
+        <th>Место</th>
+        <th>Участник</th>
+        <th>&nbsp;</th>
+    </tr>
+        {% for order in orders %}
+            <tr>
+                <td style="min-width: 20px; background-color: {{ order.balloon_color }}">&nbsp;</td>
+                <td>{{ order.room }}</td>
+                <td>{{ order.place }}</td>
+                <td>{{ order.author_name }}</td>
+                <td align="right">
+                    {% if order.done %}
+                        Закрыт
+                    {% else %}
+                        <a class="btn btn-primary order-done" data-order="{{ order.id }}">Выполнен</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p></p>
+{% endblock %}

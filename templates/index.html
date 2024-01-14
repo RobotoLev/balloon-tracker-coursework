@@ -1,0 +1,37 @@
+{% extends "site_base.html" %}
+
+{% block head_title %}
+    Сервис
+{% endblock %}
+
+{% block content %}
+    <p></p>
+
+    <p class="lead">Balloon Tracker - сервис помощи для доставки шариков!</p>
+
+    <p></p>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Локация / место</th>
+            <th>Участник</th>
+            <th>Шарики</th>
+        </tr>
+        {% for group in orders_groups %}
+            <tr>
+                <td>{{ group.1.0 }} / {{ group.1.1 }}</td>
+                <td>{{ group.1.2 }}</td>
+                <td>
+                    {% for color in group.1.3 %}
+                        <div class="balloon" style="background-color: {{ color }};"></div>
+                    {% endfor %}
+                    {% for color in group.1.4 %}
+                        <div class="balloon" style="border: 2px solid {{ color }};"></div>
+                    {% endfor %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p></p>
+{% endblock %}
